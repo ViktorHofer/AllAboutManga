@@ -1,0 +1,86 @@
+﻿<Page
+    xmlns:prism="using:Microsoft.Practices.Prism.StoreApps"
+    xmlns:prismmvvm="using:Microsoft.Practices.Prism.Mvvm"
+    xmlns:unictrl="using:UniRock.Controls"
+    prismmvvm:ViewModelLocator.AutoWireViewModel="True"
+    x:Class="AllAboutManga.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <unictrl:AutoRotatingGridView Grid.Row="1"
+                                      MinimalLayoutWidth="500"
+                                      MinimalItemTemplate="{StaticResource MangaItemDataTemplateMinimal}"
+                                      PortraitItemTemplate="{StaticResource MangaItemDataTemplatePortrait}"
+                                      ItemTemplate="{StaticResource MangaItemDataTemplate}"
+                                      ItemsSource="{Binding MangaBoxViewModel.Mangas, Mode=OneWay}">
+            <unictrl:AutoRotatingGridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsWrapGrid Margin="116,0,30,20" 
+                                   ItemWidth="230" 
+                                   ItemHeight="360" />
+                </ItemsPanelTemplate>
+            </unictrl:AutoRotatingGridView.ItemsPanel>
+        </unictrl:AutoRotatingGridView>
+
+        <Grid x:Name="HeaderGrid" 
+              Grid.Row="0" 
+              Height="140">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>           
+
+            <AppBarButton Command="{Binding BackCommand}"
+                          IsEnabled="False"
+                          Style="{StaticResource BackButtonStyle}" />
+            <TextBlock Text="All About Manga"
+                       Grid.Column="1"
+                       TextTrimming="WordEllipsis"
+                       Style="{StaticResource PageHeaderTextStyle}" />
+            
+            <StackPanel Orientation="Horizontal" 
+                        Margin="0,0,30,40" 
+                        VerticalAlignment="Bottom"
+                        Grid.Column="2">
+                <ComboBox DataContext="{Binding MangaOrderViewModel}" 
+                          ItemsSource="{Binding MangaOrderOptions}"
+                          SelectedItem="{Binding MangaOrder, Mode=TwoWay}" />
+                <ComboBox DataContext="{Binding MangaFilterViewModel}" 
+                          ItemsSource="{Binding MangaFilterOptions}"
+                          SelectedItem="{Binding MangaFilter, Mode=TwoWay}" />
+                <TextBox DataContext="{Binding MangaSearchViewModel}" 
+                         Text="{Binding SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+        </Grid>
+        
+        <CommandBar Grid.Row="1" 
+                    VerticalAlignment="Bottom">
+            <AppBarButton Icon="Sort" 
+                          Label="Sort" 
+                          DataContext="{Binding MangaOrderViewModel}">
+                <AppBarButton.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="a"></MenuFlyoutItem>
+                        <MenuFlyoutItem Text="b"></MenuFlyoutItem>
+                        <MenuFlyoutItem Text="c"></MenuFlyoutItem>
+                    </MenuFlyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+        </CommandBar>
+    </Grid>
+</Page>
