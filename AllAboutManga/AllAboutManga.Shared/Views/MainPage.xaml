@@ -22,11 +22,12 @@
         </Grid.ChildrenTransitions>
 
         <unictrl:AutoRotatingGridView Grid.Row="1"
+                                      DataContext="{Binding MangaCollectionViewModel}"
                                       MinimalLayoutWidth="500"
                                       MinimalItemTemplate="{StaticResource MangaItemDataTemplateMinimal}"
                                       PortraitItemTemplate="{StaticResource MangaItemDataTemplatePortrait}"
                                       ItemTemplate="{StaticResource MangaItemDataTemplate}"
-                                      ItemsSource="{Binding MangaBoxViewModel.Mangas, Mode=OneWay}">
+                                      ItemsSource="{Binding Mangas, Mode=OneWay}">
             <unictrl:AutoRotatingGridView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <ItemsWrapGrid Margin="116,0,30,20" 

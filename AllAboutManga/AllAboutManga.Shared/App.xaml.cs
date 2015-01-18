@@ -77,7 +77,7 @@ namespace AllAboutManga
 
                 // ViewModels
                 .RegisterType<MainPageViewModel>(new ContainerControlledLifetimeManager())
-                .RegisterType<MangaBoxViewModel>(new ContainerControlledLifetimeManager())
+                .RegisterType<MangaCollectionViewModel>(new ContainerControlledLifetimeManager())
                 .RegisterType<MangaOrderViewModel>(new ContainerControlledLifetimeManager())
                 .RegisterType<MangaFilterViewModel>(new ContainerControlledLifetimeManager())
                 .RegisterType<MangaSearchViewModel>(new ContainerControlledLifetimeManager())
@@ -97,7 +97,7 @@ namespace AllAboutManga
 
         protected override async Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args)
         {
-            _unityContainer.Resolve<MangaBoxViewModel>();
+            _unityContainer.Resolve<MangaCollectionViewModel>();
             var mangaCollectionService = _unityContainer.Resolve<IMangaCollectionService>();
             var eventAggregator = _unityContainer.Resolve<IEventAggregator>();
 

@@ -11,7 +11,7 @@ namespace AllAboutManga.Business.ViewModels
     {
         private readonly IEventAggregator _eventAggregator;
 
-        public MangaBoxViewModel MangaBoxViewModel { get; }
+        public MangaCollectionViewModel MangaCollectionViewModel { get; }
 
         public MangaOrderViewModel MangaOrderViewModel { get; }
 
@@ -19,19 +19,19 @@ namespace AllAboutManga.Business.ViewModels
 
         public MangaSearchViewModel MangaSearchViewModel { get; }
 
-        public MainPageViewModel(MangaBoxViewModel mangaBoxViewModel,
+        public MainPageViewModel(MangaCollectionViewModel mangaCollectionViewModel,
             MangaOrderViewModel mangaOrderViewModel,
             MangaFilterViewModel mangaFilterViewModel,
             MangaSearchViewModel mangaSearchViewModel,
             IEventAggregator eventAggregator)
         {
-            if (mangaBoxViewModel == null) throw new ArgumentNullException(nameof(mangaBoxViewModel));
+            if (mangaCollectionViewModel == null) throw new ArgumentNullException(nameof(mangaCollectionViewModel));
             if (mangaOrderViewModel == null) throw new ArgumentNullException(nameof(mangaOrderViewModel));
             if (mangaFilterViewModel == null) throw new ArgumentNullException(nameof(mangaFilterViewModel));
             if (mangaSearchViewModel == null) throw new ArgumentNullException(nameof(mangaSearchViewModel));
             if (eventAggregator == null) throw new ArgumentNullException(nameof(eventAggregator));
 
-            MangaBoxViewModel = mangaBoxViewModel;
+            MangaCollectionViewModel = mangaCollectionViewModel;
             MangaOrderViewModel = mangaOrderViewModel;
             MangaFilterViewModel = mangaFilterViewModel;
             MangaSearchViewModel = mangaSearchViewModel;

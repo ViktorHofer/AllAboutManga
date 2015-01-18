@@ -9,7 +9,7 @@ using Microsoft.Practices.Prism.PubSubEvents;
 
 namespace AllAboutManga.Business.ViewModels
 {
-    public class MangaBoxViewModel : BindableBase
+    public class MangaCollectionViewModel : BindableBase
     {
         private readonly IEventAggregator _eventAggregator;
         private readonly INavigationService _navigationService;
@@ -30,7 +30,7 @@ namespace AllAboutManga.Business.ViewModels
 
         public DelegateCommand<MangaViewModel> SelectMangaCommand { get; } 
 
-        public MangaBoxViewModel(IEventAggregator eventAggregator,
+        public MangaCollectionViewModel(IEventAggregator eventAggregator,
             INavigationService navigationService,
             MangaViewModelFactory mangaViewModelFactory)
         {

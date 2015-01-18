@@ -42,7 +42,7 @@
     <Compile Include="ViewModels\ImageViewModel.cs" />
     <Compile Include="ViewModels\ImageViewModelFactory.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
-    <Compile Include="ViewModels\MangaBoxViewModel.cs" />
+    <Compile Include="ViewModels\MangaCollectionViewModel.cs" />
     <Compile Include="ViewModels\MangaFilterViewModel.cs" />
     <Compile Include="ViewModels\MangaViewModel.cs" />
     <Compile Include="ViewModels\MangaViewModelFactory.cs" />
