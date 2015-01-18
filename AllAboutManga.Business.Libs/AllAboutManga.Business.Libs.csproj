@@ -42,8 +42,8 @@
     <Compile Include="Models\Manga.cs" />
     <Compile Include="Models\MangaCollection.cs" />
     <Compile Include="Models\MangaCollectionChangedEvent.cs" />
-    <Compile Include="Models\MangaFilter.cs" />
-    <Compile Include="Models\MangaFilterChangedEvent.cs" />
+    <Compile Include="Models\MangaDisplayOption.cs" />
+    <Compile Include="Models\MangaDisplayOptionChangedEvent.cs" />
     <Compile Include="Models\MangaSearchQueryChangedEvent.cs" />
     <Compile Include="Models\MangaOrder.cs" />
     <Compile Include="Models\MangaOrderChangedEvent.cs" />
@@ -51,6 +51,7 @@
     <Compile Include="Profiles\DataAccessProfile.cs" />
     <Compile Include="Profiles\WebserviceProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IMangaService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper">

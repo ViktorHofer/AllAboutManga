@@ -15,35 +15,35 @@ namespace AllAboutManga.Business.ViewModels
 
         public MangaOrderViewModel MangaOrderViewModel { get; }
 
-        public MangaFilterViewModel MangaFilterViewModel { get; }
+        public MangaDisplayOptionViewModel MangaDisplayOptionViewModel { get; }
 
         public MangaSearchViewModel MangaSearchViewModel { get; }
 
         public MainPageViewModel(MangaCollectionViewModel mangaCollectionViewModel,
             MangaOrderViewModel mangaOrderViewModel,
-            MangaFilterViewModel mangaFilterViewModel,
+            MangaDisplayOptionViewModel mangaDisplayOptionViewModel,
             MangaSearchViewModel mangaSearchViewModel,
             IEventAggregator eventAggregator)
         {
             if (mangaCollectionViewModel == null) throw new ArgumentNullException(nameof(mangaCollectionViewModel));
             if (mangaOrderViewModel == null) throw new ArgumentNullException(nameof(mangaOrderViewModel));
-            if (mangaFilterViewModel == null) throw new ArgumentNullException(nameof(mangaFilterViewModel));
+            if (mangaDisplayOptionViewModel == null) throw new ArgumentNullException(nameof(mangaDisplayOptionViewModel));
             if (mangaSearchViewModel == null) throw new ArgumentNullException(nameof(mangaSearchViewModel));
             if (eventAggregator == null) throw new ArgumentNullException(nameof(eventAggregator));
 
             MangaCollectionViewModel = mangaCollectionViewModel;
             MangaOrderViewModel = mangaOrderViewModel;
-            MangaFilterViewModel = mangaFilterViewModel;
+            MangaDisplayOptionViewModel = mangaDisplayOptionViewModel;
             MangaSearchViewModel = mangaSearchViewModel;
             _eventAggregator = eventAggregator;
         }
 
         public override void OnNavigatedTo(object navigationParameter, NavigationMode navigationMode, Dictionary<string, object> viewModelState)
         {
-            if (navigationParameter == null || !(navigationParameter is MangaFilter))
+            if (navigationParameter == null || !(navigationParameter is MangaDisplayOption))
                 throw new ArgumentException(nameof(navigationParameter));
 
-            _eventAggregator.GetEvent<MangaFilterChangedEvent>().Publish((MangaFilter)navigationParameter);
+            _eventAggregator.GetEvent<MangaDisplayOptionChangedEvent>().Publish((MangaDisplayOption)navigationParameter);
             base.OnNavigatedTo(navigationParameter, navigationMode, viewModelState);
         }
     }

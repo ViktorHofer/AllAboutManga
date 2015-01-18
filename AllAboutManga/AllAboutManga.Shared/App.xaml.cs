@@ -4,9 +4,6 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Resources;
 using AllAboutManga.Business.ViewModels;
-using AllAboutManga.Webservice.Libs;
-using AllAboutManga.Webservice.MangaEden;
-using AllAboutManga.Webservice.MangaEden.Profiles;
 using AutoMapper;
 using MetroLog;
 using Microsoft.Practices.Prism.PubSubEvents;
@@ -24,6 +21,8 @@ using AllAboutManga.DataAccess.Libs;
 using AllAboutManga.DataAccess.Mock;
 using AllAboutManga.Business.Libs.Profiles;
 using AllAboutManga.Business.Libs.Models;
+using AllAboutManga.Business.Libs.Services;
+using AllAboutManga.Business.Services;
 
 namespace AllAboutManga
 {
@@ -52,9 +51,9 @@ namespace AllAboutManga
                 return viewModelType;
             });
 
-            Mapper.AddProfile(new MangaCollectionProfile());
-            Mapper.AddProfile(new MangaProfile());
-            Mapper.AddProfile(new PageProfile());
+            Mapper.AddProfile(new Webservice.MangaEden.Profiles.MangaCollectionProfile());
+            Mapper.AddProfile(new Webservice.MangaEden.Profiles.MangaProfile());
+            Mapper.AddProfile(new Webservice.MangaEden.Profiles.PageProfile());
 
             _unityContainer
                 // Services
@@ -70,20 +69,23 @@ namespace AllAboutManga
                 .RegisterInstance(Mapper.Engine)
 
                 // WebServices
-                .RegisterType<IMangaCollectionService, MangaCollectionService>(new ContainerControlledLifetimeManager())
-                .RegisterType<IMangaService, MangaService>(new ContainerControlledLifetimeManager())
-                .RegisterType<IPageService, PageService>(new ContainerControlledLifetimeManager())
-                .RegisterType<IImageService, ImageService>(new ContainerControlledLifetimeManager())
+                .RegisterType<Webservice.Libs.IMangaCollectionService, Webservice.MangaEden.MangaCollectionService>(new ContainerControlledLifetimeManager())
+                .RegisterType<Webservice.Libs.IMangaService, Webservice.MangaEden.MangaService>(new ContainerControlledLifetimeManager())
+                .RegisterType<Webservice.Libs.IPageService, Webservice.MangaEden.PageService>(new ContainerControlledLifetimeManager())
+                .RegisterType<Webservice.Libs.IImageService, Webservice.MangaEden.ImageService>(new ContainerControlledLifetimeManager())
 
                 // ViewModels
                 .RegisterType<MainPageViewModel>(new ContainerControlledLifetimeManager())
                 .RegisterType<MangaCollectionViewModel>(new ContainerControlledLifetimeManager())
                 .RegisterType<MangaOrderViewModel>(new ContainerControlledLifetimeManager())
-                .RegisterType<MangaFilterViewModel>(new ContainerControlledLifetimeManager())
+                .RegisterType<MangaDisplayOptionViewModel>(new ContainerControlledLifetimeManager())
                 .RegisterType<MangaSearchViewModel>(new ContainerControlledLifetimeManager())
                 .RegisterType<SettingsPageViewModel>(new ContainerControlledLifetimeManager())
                 .RegisterType<MangaViewModelFactory>(new ContainerControlledLifetimeManager())
                 .RegisterType<ImageViewModelFactory>(new ContainerControlledLifetimeManager())
+
+                // Services
+                .RegisterType<IMangaService, MangaService>(new ContainerControlledLifetimeManager())
 
                 // Repositories
                 .RegisterType<IMangaRepository, MangaRepository>(new ContainerControlledLifetimeManager())
@@ -97,25 +99,9 @@ namespace AllAboutManga
 
         protected override async Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args)
         {
-            _unityContainer.Resolve<MangaCollectionViewModel>();
-            var mangaCollectionService = _unityContainer.Resolve<IMangaCollectionService>();
-            var eventAggregator = _unityContainer.Resolve<IEventAggregator>();
+            await _unityContainer.Resolve<IMangaService>().LoadAsync();
 
-            // Retrieve mangas and notify
-            var webserviceMangas = await mangaCollectionService.GetAllAsync();
-            var businessMangas = Mapper.Map<Business.Libs.Models.MangaCollection>(webserviceMangas);
-            eventAggregator.GetEvent<MangaCollectionChangedEvent>().Publish(businessMangas);
-
-            // Save mangas into repository
-            var mangaRepository = _unityContainer.Resolve<IMangaRepository>();
-            var hasMangas = await mangaRepository.Any();
-            if (!hasMangas)
-            {
-                var dataAccessMangas = Mapper.Map<DataAccess.Libs.Models.MangaCollection>(businessMangas);
-                await mangaRepository.AddAll(dataAccessMangas.Mangas);
-            }
-
-            NavigationService.Navigate("Main", MangaFilter.All);
+            NavigationService.Navigate("Main", MangaDisplayOption.All);
         }
 
 #if WINDOWS_APP

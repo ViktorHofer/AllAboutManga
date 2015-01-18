@@ -38,12 +38,16 @@
     <TargetPlatform Include="Windows, Version=8.1" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICollectionViewEx.cs" />
+    <Compile Include="ListCollectionView.cs" />
+    <Compile Include="ObservableCollectionExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\MangaService.cs" />
     <Compile Include="ViewModels\ImageViewModel.cs" />
     <Compile Include="ViewModels\ImageViewModelFactory.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\MangaCollectionViewModel.cs" />
-    <Compile Include="ViewModels\MangaFilterViewModel.cs" />
+    <Compile Include="ViewModels\MangaDisplayOptionViewModel.cs" />
     <Compile Include="ViewModels\MangaViewModel.cs" />
     <Compile Include="ViewModels\MangaViewModelFactory.cs" />
     <Compile Include="ViewModels\MangaSearchViewModel.cs" />

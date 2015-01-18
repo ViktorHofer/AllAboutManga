@@ -1,5 +1,7 @@
 ﻿using AllAboutManga.DataAccess.Libs.Models;
+using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace AllAboutManga.DataAccess.Libs
@@ -13,6 +15,8 @@ namespace AllAboutManga.DataAccess.Libs
         Task AddAll(IEnumerable<Manga> mangas);
 
         Task Clear();
+
+        Task<IReadOnlyCollection<Manga>> Query(Func<Manga, bool> predicate);
 
         Task<Manga> Update(Manga manga);
 

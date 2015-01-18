@@ -2,11 +2,11 @@
 
 namespace AllAboutManga.Views
 {
-    public sealed partial class MainPage : IView
+    public sealed partial class MainPage
     {
         public MainPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
     }
 }

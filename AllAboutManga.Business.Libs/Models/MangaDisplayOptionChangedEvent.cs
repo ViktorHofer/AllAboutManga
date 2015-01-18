@@ -2,7 +2,7 @@
 
 namespace AllAboutManga.Business.Libs.Models
 {
-    public class MangaFilterChangedEvent : PubSubEvent<MangaFilter>
+    public class MangaDisplayOptionChangedEvent : PubSubEvent<MangaDisplayOption>
     {
     }
 }

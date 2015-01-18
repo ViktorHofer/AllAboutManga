@@ -1,6 +1,6 @@
 ﻿namespace AllAboutManga.Business.Libs.Models
 {
-    public enum MangaFilter
+    public enum MangaDisplayOption
     {
         All,
         Favorites

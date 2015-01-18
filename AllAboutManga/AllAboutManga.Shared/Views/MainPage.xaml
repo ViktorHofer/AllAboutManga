@@ -1,13 +1,14 @@
-﻿<Page
+﻿<prism:VisualStateAwarePage
     xmlns:prism="using:Microsoft.Practices.Prism.StoreApps"
     xmlns:prismmvvm="using:Microsoft.Practices.Prism.Mvvm"
     xmlns:unictrl="using:UniRock.Controls"
     prismmvvm:ViewModelLocator.AutoWireViewModel="True"
-    x:Class="AllAboutManga.Views.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core" xmlns:Media="using:Microsoft.Xaml.Interactions.Media" x:Name="visualStateAwarePage"
+    x:Class="AllAboutManga.Views.MainPage"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -21,67 +22,67 @@
             </TransitionCollection>
         </Grid.ChildrenTransitions>
 
-        <unictrl:AutoRotatingGridView Grid.Row="1"
-                                      DataContext="{Binding MangaCollectionViewModel}"
-                                      MinimalLayoutWidth="500"
-                                      MinimalItemTemplate="{StaticResource MangaItemDataTemplateMinimal}"
-                                      PortraitItemTemplate="{StaticResource MangaItemDataTemplatePortrait}"
-                                      ItemTemplate="{StaticResource MangaItemDataTemplate}"
-                                      ItemsSource="{Binding Mangas, Mode=OneWay}">
+        <unictrl:AutoRotatingGridView x:Name="autoRotatingGridView" Grid.Row="1"
+			DataContext="{Binding MangaCollectionViewModel}"
+			MinimalLayoutWidth="500"
+			MinimalItemTemplate="{StaticResource MangaItemDataTemplateMinimal}"
+			PortraitItemTemplate="{StaticResource MangaItemDataTemplatePortrait}"
+			ItemTemplate="{StaticResource MangaItemDataTemplate}"
+			ItemsSource="{Binding Mangas, Mode=OneWay}">
             <unictrl:AutoRotatingGridView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <ItemsWrapGrid Margin="116,0,30,20" 
-                                   ItemWidth="230" 
-                                   ItemHeight="360" />
+						ItemWidth="230" 
+						ItemHeight="360" />
                 </ItemsPanelTemplate>
             </unictrl:AutoRotatingGridView.ItemsPanel>
         </unictrl:AutoRotatingGridView>
 
         <Grid x:Name="HeaderGrid" 
-              Grid.Row="0" 
-              Height="140">
+			Grid.Row="0" 
+			Height="140">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
                 <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>           
+            </Grid.ColumnDefinitions>
 
-            <AppBarButton Command="{Binding BackCommand}"
-                          IsEnabled="False"
-                          Style="{StaticResource BackButtonStyle}" />
-            <TextBlock Text="All About Manga"
-                       Grid.Column="1"
-                       TextTrimming="WordEllipsis"
-                       Style="{StaticResource PageHeaderTextStyle}" />
-            
+            <ComboBox Grid.Column="0"
+				Margin="116,0,0,0"
+				DataContext="{Binding MangaDisplayOptionViewModel}" 
+				ItemsSource="{Binding MangaDisplayOptions}"
+				SelectedItem="{Binding MangaDisplayOption, Mode=TwoWay}" 
+				VerticalAlignment="Center" 
+				HorizontalAlignment="Left" 
+				Style="{StaticResource HeaderComboBoxStyle}" 
+				FontSize="36.667" />
+
             <StackPanel Orientation="Horizontal" 
-                        Margin="0,0,30,40" 
-                        VerticalAlignment="Bottom"
-                        Grid.Column="2">
+				Margin="0,0,30,40" 
+				VerticalAlignment="Bottom"
+				Grid.Column="1">
                 <ComboBox DataContext="{Binding MangaOrderViewModel}" 
-                          ItemsSource="{Binding MangaOrderOptions}"
-                          SelectedItem="{Binding MangaOrder, Mode=TwoWay}" />
-                <ComboBox DataContext="{Binding MangaFilterViewModel}" 
-                          ItemsSource="{Binding MangaFilterOptions}"
-                          SelectedItem="{Binding MangaFilter, Mode=TwoWay}" />
+					ItemsSource="{Binding MangaOrderOptions}"
+					SelectedItem="{Binding MangaOrder, Mode=TwoWay}" />
                 <TextBox DataContext="{Binding MangaSearchViewModel}" 
-                         Text="{Binding SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+					Width="300"
+					Margin="20,0,0,0"
+					Text="{Binding SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
         </Grid>
-        
+
         <CommandBar Grid.Row="1" 
-                    VerticalAlignment="Bottom">
+			VerticalAlignment="Bottom">
             <AppBarButton Icon="Sort" 
-                          Label="Sort" 
-                          DataContext="{Binding MangaOrderViewModel}">
+				Label="Sort" 
+				DataContext="{Binding MangaOrderViewModel}">
                 <AppBarButton.Flyout>
                     <MenuFlyout>
-                        <MenuFlyoutItem Text="a"></MenuFlyoutItem>
-                        <MenuFlyoutItem Text="b"></MenuFlyoutItem>
-                        <MenuFlyoutItem Text="c"></MenuFlyoutItem>
+                        <MenuFlyoutItem Text="a"/>
+                        <MenuFlyoutItem Text="b"/>
+                        <MenuFlyoutItem Text="c"/>
                     </MenuFlyout>
                 </AppBarButton.Flyout>
             </AppBarButton>
         </CommandBar>
     </Grid>
-</Page>
+</prism:VisualStateAwarePage>

@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using AllAboutManga.DataAccess.Libs.Models;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
+using System.Linq;
 
 namespace AllAboutManga.DataAccess.Mock
 {
@@ -63,6 +65,15 @@ namespace AllAboutManga.DataAccess.Mock
         {
             await Task.FromResult<object>(null);
             return _mangaDb;
+        }
+
+        public async Task<IReadOnlyCollection<Manga>> Query(Func<Manga, bool> predicate)
+        {
+            await Task.FromResult<object>(null);
+
+            return _mangaDb
+                .Where(predicate)
+                .ToList();
         }
     }
 }
