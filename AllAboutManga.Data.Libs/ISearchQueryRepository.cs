@@ -4,10 +4,8 @@ using System.Threading.Tasks;
 
 namespace AllAboutManga.Data.Libs
 {
-    public interface IRoamableRepository
+    public interface ISearchQueryRepository
     {
-        Task<IReadOnlyCollection<Manga>> GetFavorites();
-
-        Task<IReadOnlyCollection<Manga>> GetHistory();
+        Task<IReadOnlyCollection<SearchQuery>> GetSearchHistoryAsync();
     }
 }

@@ -1,23 +1,25 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 
 namespace AllAboutManga.Data.Libs.Models
 {
+    [Table("Mangas")]
     public class Manga
     {
+        [PrimaryKey]
         public string Id { get; set; }
 
-        public IReadOnlyCollection<object> Aka { get; set; }
+        [NotNull]
+        public string Title { get; set; }
+
+        public string Categories { get; set; }
 
         public string Alias { get; set; }
 
         public string Artist { get; set; }
 
         public string Author { get; set; }
-
-        public IReadOnlyCollection<string> Categories { get; set; }
-
-        public IReadOnlyCollection<Chapter> Chapters { get; set; } 
 
         public DateTime Created { get; set; }
 
@@ -32,7 +34,5 @@ namespace AllAboutManga.Data.Libs.Models
         public DateTime LastChapterDate { get; set; }
 
         public int Status { get; set; }
-
-        public string Title { get; set; }
     }
 }

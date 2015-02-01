@@ -17,19 +17,20 @@ using System.Collections.Generic;
 #endif
 using Microsoft.Practices.Prism.Mvvm;
 using Microsoft.Practices.Unity;
-using AllAboutManga.Data.Libs;
-using AllAboutManga.Data.InMemory;
 using AllAboutManga.Business.Libs.Profiles;
 using AllAboutManga.Business.Libs.Models;
 using AllAboutManga.Business.Libs.Services;
 using AllAboutManga.Business.Services;
-using AllAboutManga.Data.Sql;
+using SQLite;
+using Windows.Storage;
 
 namespace AllAboutManga
 {
     public sealed partial class App
     {
         private readonly IUnityContainer _unityContainer = new UnityContainer();
+        private readonly Lazy<SQLiteAsyncConnection> _localDb = new Lazy<SQLiteAsyncConnection>(() => new SQLiteAsyncConnection("mangas.sqlite"));
+        private readonly Lazy<SQLiteAsyncConnection> _roamingDb = new Lazy<SQLiteAsyncConnection>(() => new SQLiteAsyncConnection(ApplicationData.Current.RoamingFolder.Path + "\\mangas.sqlite"));
 
         public App()
         {
@@ -60,8 +61,7 @@ namespace AllAboutManga
                 // Services
                 .RegisterInstance(NavigationService, new ContainerControlledLifetimeManager())
                 .RegisterInstance(SessionStateService, new ContainerControlledLifetimeManager())
-                .RegisterInstance<IResourceLoader>(new ResourceLoaderAdapter(new ResourceLoader()),
-                    new ContainerControlledLifetimeManager())
+                .RegisterInstance<IResourceLoader>(new ResourceLoaderAdapter(new ResourceLoader()), new ContainerControlledLifetimeManager())
                 .RegisterType<IEventAggregator, EventAggregator>(new ContainerControlledLifetimeManager())
                 .RegisterType<IAlertMessageService, AlertMessageService>(new ContainerControlledLifetimeManager())
                 .RegisterInstance(LogManagerFactory.DefaultLogManager, new ContainerControlledLifetimeManager())
@@ -89,8 +89,9 @@ namespace AllAboutManga
                 .RegisterType<IMangaService, MangaService>(new ContainerControlledLifetimeManager())
 
                 // Repositories
-                .RegisterType<IMangaRepository, MangaRepository>(new ContainerControlledLifetimeManager())
-                .RegisterType<IRoamableRepository, RoamableRepository>(new ContainerControlledLifetimeManager())
+                .RegisterInstance<Data.Libs.IMangaRepository>(await Data.Sql.MangaRepository.CreateAsync(_localDb.Value), new ContainerControlledLifetimeManager())
+                .RegisterInstance<Data.Libs.IFavoriteRepository>(await Data.Sql.FavoriteRepository.CreateAsync(_roamingDb.Value), new ContainerControlledLifetimeManager())
+                .RegisterInstance<Data.Libs.ISearchQueryRepository>(await Data.Sql.SearchQueryRepository.CreateAsync(_roamingDb.Value), new ContainerControlledLifetimeManager())
                 ;
 
             // Apply auto mapper profiles

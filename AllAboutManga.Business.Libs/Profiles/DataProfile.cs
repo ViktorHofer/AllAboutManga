@@ -8,12 +8,10 @@ namespace AllAboutManga.Business.Libs.Profiles
     {
         protected override void Configure()
         {
-            CreateMap<MangaCollection, DataAccessModels.MangaCollection>();
             CreateMap<Manga, DataAccessModels.Manga>();
             CreateMap<Chapter, DataAccessModels.Chapter>();
             CreateMap<Page, DataAccessModels.Page>();
 
-            CreateMap<DataAccessModels.MangaCollection, MangaCollection>();
             CreateMap<DataAccessModels.Manga, Manga>();
             CreateMap<DataAccessModels.Chapter, Chapter>();
             CreateMap<DataAccessModels.Page, Page>();

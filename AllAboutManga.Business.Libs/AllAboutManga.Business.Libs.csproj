@@ -40,7 +40,6 @@
   <ItemGroup>
     <Compile Include="Models\Chapter.cs" />
     <Compile Include="Models\Manga.cs" />
-    <Compile Include="Models\MangaCollection.cs" />
     <Compile Include="Models\MangaCollectionChangedEvent.cs" />
     <Compile Include="Models\MangaDisplayOption.cs" />
     <Compile Include="Models\MangaDisplayOptionChangedEvent.cs" />

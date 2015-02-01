@@ -9,12 +9,10 @@ namespace AllAboutManga.Business.Libs.Profiles
     {
         protected override void Configure()
         {
-            CreateMap<WebserviceModels.MangaCollection, MangaCollection>();
             CreateMap<WebserviceModels.Manga, Manga>();
             CreateMap<WebserviceModels.Chapter, Chapter>();
             CreateMap<WebserviceModels.Page, Page>();
 
-            CreateMap<WebserviceModels.MangaCollection, DataModels.MangaCollection>();
             CreateMap<WebserviceModels.Manga, DataModels.Manga>();
             CreateMap<WebserviceModels.Chapter, DataModels.Chapter>();
             CreateMap<WebserviceModels.Page, DataModels.Page>();

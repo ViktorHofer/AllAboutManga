@@ -8,22 +8,22 @@ namespace AllAboutManga.Data.Libs
 {
     public interface IMangaRepository
     {
-        Task<bool> Any();
+        Task<bool> AnyAsync();
 
-        Task Add(Manga manga);
+        Task CreateAsync(Manga manga);
 
-        Task AddAll(IEnumerable<Manga> mangas);
+        Task CreateAsync(IEnumerable<Manga> mangas);
 
-        Task Clear();
+        Task ClearAsync();
 
-        Task<IReadOnlyCollection<Manga>> Query(Func<Manga, bool> predicate);
+        Task<IReadOnlyCollection<Manga>> QueryAsync(Func<Manga, bool> predicate);
 
-        Task<Manga> Update(Manga manga);
+        Task<Manga> UpdateAsync(Manga manga);
 
-        Task<bool> Delete(Manga manga);
+        Task DeleteAsync(string mangaId);
 
-        Task<Manga> GetById(string id);
+        Task<Manga> GetByIdAsync(string mangaId);
 
-        Task<IReadOnlyCollection<Manga>> GetAll();
+        Task<IReadOnlyCollection<Manga>> GetAllAsync();
     }
 }

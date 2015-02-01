@@ -41,7 +41,7 @@ namespace AllAboutManga.Business.ViewModels
             _mangaService = mangaService;
             _mangaViewModelFactory = mangaViewModelFactory;
 
-            _eventAggregator.GetEvent<MangaCollectionChangedEvent>().Subscribe(async mangaCollection =>
+            _eventAggregator.GetEvent<MangaCollectionChangedEvent>().Subscribe(async obj =>
             {
                 await ReloadList();
             });

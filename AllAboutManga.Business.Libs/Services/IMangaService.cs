@@ -6,7 +6,7 @@ namespace AllAboutManga.Business.Libs.Services
 {
     public interface IMangaService
     {
-        Task LoadAsync();
+        Task LoadAsync(bool loadOnlyIfNotExisting = true);
 
         Task<IReadOnlyCollection<Manga>> GetFavoritesAsync();
 
