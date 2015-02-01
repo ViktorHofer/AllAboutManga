@@ -9,30 +9,30 @@ namespace AllAboutManga.Data.Sql
 {
     public class FavoriteRepository : IFavoriteRepository
     {
-        private readonly SQLiteAsyncConnection _roamingDb;
+        private readonly SQLiteAsyncConnection _db;
 
         /// <summary>
         /// Hide constructor, only allow creation with asynchronous "constructor"
         /// </summary>
-        private FavoriteRepository(SQLiteAsyncConnection roamingDb)
+        private FavoriteRepository(SQLiteAsyncConnection db)
         {
-            if (roamingDb == null) throw new ArgumentNullException(nameof(roamingDb));
+            if (db == null) throw new ArgumentNullException(nameof(db));
 
-            _roamingDb = roamingDb;
+            _db = db;
         }
 
-        public static async Task<FavoriteRepository> CreateAsync(SQLiteAsyncConnection roamingDb)
+        public static async Task<FavoriteRepository> CreateAsync(SQLiteAsyncConnection db)
         {
-            var favoriteRepository = new FavoriteRepository(roamingDb);
+            var favoriteRepository = new FavoriteRepository(db);
 
-            await favoriteRepository._roamingDb.CreateTablesAsync(typeof(Favorite));
+            await favoriteRepository._db.CreateTablesAsync(typeof(Favorite));
 
             return favoriteRepository;
         }
 
         public async Task<IReadOnlyCollection<Favorite>> GetFavoritesAsync()
         {
-            return await _roamingDb
+            return await _db
                 .Table<Favorite>()
                 .ToListAsync();
         }

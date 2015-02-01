@@ -9,23 +9,23 @@ namespace AllAboutManga.Data.Sql
 {
     public class MangaRepository : IMangaRepository
     {
-        private readonly SQLiteAsyncConnection _localDb;
+        private readonly SQLiteAsyncConnection _db;
 
         /// <summary>
         /// Hide constructor, only allow creation with asynchronous "constructor"
         /// </summary>
-        private MangaRepository(SQLiteAsyncConnection localDb)
+        private MangaRepository(SQLiteAsyncConnection db)
         {
-            if (localDb == null) throw new ArgumentNullException(nameof(localDb));
+            if (db == null) throw new ArgumentNullException(nameof(db));
 
-            _localDb = localDb;
+            _db = db;
         }
 
-        public static async Task<MangaRepository> CreateAsync(SQLiteAsyncConnection localDb)
+        public static async Task<MangaRepository> CreateAsync(SQLiteAsyncConnection db)
         {
-            var mangaRepository = new MangaRepository(localDb);
+            var mangaRepository = new MangaRepository(db);
 
-            await mangaRepository._localDb.CreateTablesAsync(
+            await mangaRepository._db.CreateTablesAsync(
                 typeof(Manga),
                 typeof(Chapter),
                 typeof(Page));
@@ -35,7 +35,7 @@ namespace AllAboutManga.Data.Sql
 
         public async Task<bool> AnyAsync()
         {
-            var numberOfMangas = await _localDb
+            var numberOfMangas = await _db
                 .Table<Manga>()
                 .CountAsync();
 
@@ -46,20 +46,20 @@ namespace AllAboutManga.Data.Sql
         {
             if (manga == null) throw new ArgumentNullException(nameof(manga));
 
-            await _localDb.InsertAsync(manga);
+            await _db.InsertAsync(manga);
         }
 
         public async Task CreateAsync(IEnumerable<Manga> mangas)
         {
             if (mangas == null) throw new ArgumentNullException(nameof(mangas));
 
-            await _localDb.InsertAllAsync(mangas);
+            await _db.InsertAllAsync(mangas);
         }
 
         public async Task ClearAsync()
         {
-            await _localDb.DropTableAsync<Manga>();
-            await _localDb.CreateTableAsync<Manga>();
+            await _db.DropTableAsync<Manga>();
+            await _db.CreateTableAsync<Manga>();
         }
 
         public Task<IReadOnlyCollection<Manga>> QueryAsync(Func<Manga, bool> predicate)
@@ -71,7 +71,7 @@ namespace AllAboutManga.Data.Sql
         {
             if (manga == null) throw new ArgumentNullException(nameof(manga));
 
-            await _localDb.UpdateAsync(manga);
+            await _db.UpdateAsync(manga);
 
             return manga;
         }
@@ -80,7 +80,7 @@ namespace AllAboutManga.Data.Sql
         {
             if (mangaId == null) throw new ArgumentNullException(nameof(mangaId));
 
-            var deletedCount = await _localDb
+            var deletedCount = await _db
                 .DeleteAsync(new Manga() { Id = mangaId });
         }
 
@@ -88,13 +88,13 @@ namespace AllAboutManga.Data.Sql
         {
             if (mangaId == null) throw new ArgumentNullException(nameof(mangaId));
 
-            return await _localDb
+            return await _db
                 .FindAsync<Manga>(mangaId);
         }
 
         public async Task<IReadOnlyCollection<Manga>> GetAllAsync()
         {
-            return await _localDb
+            return await _db
                 .Table<Manga>()
                 .ToListAsync();
         }

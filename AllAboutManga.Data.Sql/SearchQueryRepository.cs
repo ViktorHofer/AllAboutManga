@@ -9,23 +9,23 @@ namespace AllAboutManga.Data.Sql
 {
     public class SearchQueryRepository : ISearchQueryRepository
     {
-        private readonly SQLiteAsyncConnection _roamingDb;
+        private readonly SQLiteAsyncConnection _db;
 
         /// <summary>
         /// Hide constructor, only allow creation with asynchronous "constructor"
         /// </summary>
-        private SearchQueryRepository(SQLiteAsyncConnection roamingDb)
+        private SearchQueryRepository(SQLiteAsyncConnection db)
         {
-            if (roamingDb == null) throw new ArgumentNullException(nameof(roamingDb));
+            if (db == null) throw new ArgumentNullException(nameof(db));
 
-            _roamingDb = roamingDb;
+            _db = db;
         }
 
-        public static async Task<SearchQueryRepository> CreateAsync(SQLiteAsyncConnection roamingDb)
+        public static async Task<SearchQueryRepository> CreateAsync(SQLiteAsyncConnection db)
         {
-            var searchItemRepository = new SearchQueryRepository(roamingDb);
+            var searchItemRepository = new SearchQueryRepository(db);
 
-            await searchItemRepository._roamingDb.CreateTablesAsync(typeof(SearchQuery));
+            await searchItemRepository._db.CreateTablesAsync(typeof(SearchQuery));
 
             return searchItemRepository;
         }
@@ -33,7 +33,7 @@ namespace AllAboutManga.Data.Sql
 
         public async Task<IReadOnlyCollection<SearchQuery>> GetSearchHistoryAsync()
         {
-            return await _roamingDb
+            return await _db
                 .Table<SearchQuery>()
                 .ToListAsync();
         }

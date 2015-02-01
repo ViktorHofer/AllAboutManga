@@ -1,4 +1,4 @@
-﻿<mvvm:MvvmAppBase
+﻿<mvvm:SplashOptimizedMvvmAppBase
     x:Class="AllAboutManga.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -22,4 +22,4 @@
         </ResourceDictionary>
     </Application.Resources>
 
-</mvvm:MvvmAppBase>
+</mvvm:SplashOptimizedMvvmAppBase>

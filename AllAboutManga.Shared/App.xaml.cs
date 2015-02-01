@@ -23,10 +23,12 @@ using AllAboutManga.Business.Libs.Services;
 using AllAboutManga.Business.Services;
 using SQLite;
 using Windows.Storage;
+using Windows.UI.Xaml.Controls;
+using AllaboutManga.Views;
 
 namespace AllAboutManga
 {
-    public sealed partial class App
+    public sealed partial class App : SplashOptimizedMvvmAppBase
     {
         private readonly IUnityContainer _unityContainer = new UnityContainer();
         private readonly Lazy<SQLiteAsyncConnection> _localDb = new Lazy<SQLiteAsyncConnection>(() => new SQLiteAsyncConnection("mangas.sqlite"));
@@ -37,6 +39,8 @@ namespace AllAboutManga
             InitializeComponent();
             LogManagerFactory.DefaultConfiguration.AddTarget(LogLevel.Trace, LogLevel.Fatal, new MetroLog.Targets.FileStreamingTarget());
             GlobalCrashHandler.Configure();
+
+            ExtendedSplashScreenFactory = splash => new SplashPage(splash);
         }
 
         protected override object Resolve(Type type)
@@ -44,7 +48,7 @@ namespace AllAboutManga
             return _unityContainer.Resolve(type);
         }
 
-        protected override async Task OnInitializeAsync(IActivatedEventArgs args)
+        protected override async Task OnInitializeAsync(IActivatedEventArgs args, Frame frame)
         {
             ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(viewType =>
             {
@@ -97,14 +101,14 @@ namespace AllAboutManga
             // Apply auto mapper profiles
             Mapper.AddProfile(new WebserviceProfile());
             Mapper.AddProfile(new DataProfile());
-            await Task.FromResult<object>(null);
+
+            await _unityContainer.Resolve<IMangaService>().LoadAsync();
         }
 
         protected override async Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args)
         {
-            await _unityContainer.Resolve<IMangaService>().LoadAsync();
-
             NavigationService.Navigate("Main", MangaDisplayOption.All);
+            await Task.FromResult<object>(null);
         }
 
 #if WINDOWS_APP
