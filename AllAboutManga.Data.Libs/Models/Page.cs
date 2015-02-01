@@ -1,4 +1,4 @@
-﻿namespace AllAboutManga.DataAccess.Libs.Models
+﻿namespace AllAboutManga.Data.Libs.Models
 {
     public class Page
     {

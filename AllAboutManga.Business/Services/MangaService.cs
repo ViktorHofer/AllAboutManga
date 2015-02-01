@@ -1,4 +1,4 @@
-﻿using AllAboutManga.DataAccess.Libs;
+﻿using AllAboutManga.Data.Libs;
 using AutoMapper;
 using System;
 using AllAboutManga.Business.Libs.Models;
@@ -35,7 +35,7 @@ namespace AllAboutManga.Business.Services
 
             // Save in db
             await _mangaRepository.Clear();
-            var dataAccessMangas = _mappingEngine.Map<DataAccess.Libs.Models.MangaCollection>(webserviceMangas);
+            var dataAccessMangas = _mappingEngine.Map<Data.Libs.Models.MangaCollection>(webserviceMangas);
             await _mangaRepository.AddAll(dataAccessMangas.Mangas);
         }
 

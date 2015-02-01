@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AllAboutManga.DataAccess.Libs.Models
+namespace AllAboutManga.Data.Libs.Models
 {
     public class Chapter
     {

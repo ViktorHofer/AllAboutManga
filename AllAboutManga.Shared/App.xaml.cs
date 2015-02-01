@@ -17,12 +17,13 @@ using System.Collections.Generic;
 #endif
 using Microsoft.Practices.Prism.Mvvm;
 using Microsoft.Practices.Unity;
-using AllAboutManga.DataAccess.Libs;
-using AllAboutManga.DataAccess.Mock;
+using AllAboutManga.Data.Libs;
+using AllAboutManga.Data.InMemory;
 using AllAboutManga.Business.Libs.Profiles;
 using AllAboutManga.Business.Libs.Models;
 using AllAboutManga.Business.Libs.Services;
 using AllAboutManga.Business.Services;
+using AllAboutManga.Data.Sql;
 
 namespace AllAboutManga
 {
@@ -89,11 +90,12 @@ namespace AllAboutManga
 
                 // Repositories
                 .RegisterType<IMangaRepository, MangaRepository>(new ContainerControlledLifetimeManager())
+                .RegisterType<IRoamableRepository, RoamableRepository>(new ContainerControlledLifetimeManager())
                 ;
 
             // Apply auto mapper profiles
             Mapper.AddProfile(new WebserviceProfile());
-            Mapper.AddProfile(new DataAccessProfile());
+            Mapper.AddProfile(new DataProfile());
             await Task.FromResult<object>(null);
         }
 

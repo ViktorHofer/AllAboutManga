@@ -9,7 +9,7 @@ using Microsoft.Practices.Prism.PubSubEvents;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using AllAboutManga.Business.Libs.Services;
-using AllAboutManga.DataAccess.Libs;
+using AllAboutManga.Data.Libs;
 
 namespace AllAboutManga.Business.ViewModels
 {

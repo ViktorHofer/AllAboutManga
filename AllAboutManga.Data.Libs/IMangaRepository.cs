@@ -1,10 +1,10 @@
-﻿using AllAboutManga.DataAccess.Libs.Models;
+﻿using AllAboutManga.Data.Libs.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace AllAboutManga.DataAccess.Libs
+namespace AllAboutManga.Data.Libs
 {
     public interface IMangaRepository
     {

@@ -1,10 +1,10 @@
 ﻿using AllAboutManga.Business.Libs.Models;
 using AutoMapper;
-using DataAccessModels = AllAboutManga.DataAccess.Libs.Models;
+using DataAccessModels = AllAboutManga.Data.Libs.Models;
 
 namespace AllAboutManga.Business.Libs.Profiles
 {
-    public class DataAccessProfile : Profile
+    public class DataProfile : Profile
     {
         protected override void Configure()
         {

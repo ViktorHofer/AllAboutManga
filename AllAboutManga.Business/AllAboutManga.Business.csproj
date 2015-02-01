@@ -88,9 +88,9 @@
       <Project>{493bd1a4-641f-4e2d-94ed-a5fa9fe12c3e}</Project>
       <Name>AllAboutManga.Business.Libs</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AllAboutManga.DataAccess.Libs\AllAboutManga.DataAccess.Libs.csproj">
+    <ProjectReference Include="..\AllAboutManga.Data.Libs\AllAboutManga.Data.Libs.csproj">
       <Project>{cd2fb9aa-b2de-46f6-80f7-1057570376f1}</Project>
-      <Name>AllAboutManga.DataAccess.Libs</Name>
+      <Name>AllAboutManga.Data.Libs</Name>
     </ProjectReference>
     <ProjectReference Include="..\AllAboutManga.Webservice.Libs\AllAboutManga.Webservice.Libs.csproj">
       <Project>{E0BDFF03-ED86-484F-9800-61DA72F88311}</Project>

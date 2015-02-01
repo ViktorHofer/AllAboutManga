@@ -92,6 +92,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <UseProjectNToolchain>false</UseProjectNToolchain>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -124,58 +125,57 @@
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
-    <Content Include="default.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=3.3.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\AutoMapper.3.3.0\lib\windows8\AutoMapper.dll</HintPath>
+      <HintPath>..\packages\AutoMapper.3.3.0\lib\windows8\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="AutoMapper.WinRT, Version=3.3.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\AutoMapper.3.3.0\lib\windows8\AutoMapper.WinRT.dll</HintPath>
+      <HintPath>..\packages\AutoMapper.3.3.0\lib\windows8\AutoMapper.WinRT.dll</HintPath>
     </Reference>
     <Reference Include="MetroLog">
-      <HintPath>..\..\packages\MetroLog.0.8.6.1\lib\netcore45\MetroLog.dll</HintPath>
+      <HintPath>..\packages\MetroLog.0.8.6.1\lib\netcore45\MetroLog.dll</HintPath>
     </Reference>
     <Reference Include="MetroLog.Platform">
-      <HintPath>..\..\packages\MetroLog.0.8.6.1\lib\netcore45\MetroLog.Platform.dll</HintPath>
+      <HintPath>..\packages\MetroLog.0.8.6.1\lib\netcore45\MetroLog.Platform.dll</HintPath>
     </Reference>
     <Reference Include="MetroLog.WinRT">
-      <HintPath>..\..\packages\MetroLog.0.8.6.1\lib\netcore45\MetroLog.WinRT.winmd</HintPath>
+      <HintPath>..\packages\MetroLog.0.8.6.1\lib\netcore45\MetroLog.WinRT.winmd</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Prism.Mvvm">
-      <HintPath>..\..\packages\Prism.Mvvm.1.1.1\lib\windows8\Microsoft.Practices.Prism.Mvvm.dll</HintPath>
+      <HintPath>..\packages\Prism.Mvvm.1.1.1\lib\windows8\Microsoft.Practices.Prism.Mvvm.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Prism.Mvvm.Store">
-      <HintPath>..\..\packages\Prism.Mvvm.1.1.1\lib\windows8\Microsoft.Practices.Prism.Mvvm.Store.dll</HintPath>
+      <HintPath>..\packages\Prism.Mvvm.1.1.1\lib\windows8\Microsoft.Practices.Prism.Mvvm.Store.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Prism.PubSubEvents">
-      <HintPath>..\..\packages\Prism.PubSubEvents.1.1.2\lib\portable-sl5+windowsphone8+windows8+net40+wpa81\Microsoft.Practices.Prism.PubSubEvents.dll</HintPath>
+      <HintPath>..\packages\Prism.PubSubEvents.1.1.2\lib\portable-sl5+windowsphone8+windows8+net40+wpa81\Microsoft.Practices.Prism.PubSubEvents.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Prism.SharedInterfaces">
-      <HintPath>..\..\packages\Prism.Mvvm.1.1.1\lib\windows8\Microsoft.Practices.Prism.SharedInterfaces.dll</HintPath>
+      <HintPath>..\packages\Prism.Mvvm.1.1.1\lib\windows8\Microsoft.Practices.Prism.SharedInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Prism.StoreApps">
-      <HintPath>..\..\packages\Prism.StoreApps.2.0.0\lib\windows8\Microsoft.Practices.Prism.StoreApps.dll</HintPath>
+      <HintPath>..\packages\Prism.StoreApps.2.0.0\lib\windows8\Microsoft.Practices.Prism.StoreApps.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Prism.StoreApps.Windows">
-      <HintPath>..\..\packages\Prism.StoreApps.2.0.0\lib\windows8\Microsoft.Practices.Prism.StoreApps.Windows.dll</HintPath>
+      <HintPath>..\packages\Prism.StoreApps.2.0.0\lib\windows8\Microsoft.Practices.Prism.StoreApps.Windows.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation">
-      <HintPath>..\..\packages\CommonServiceLocator.1.2\lib\portable-windows8+net40+sl5+windowsphone8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <HintPath>..\packages\CommonServiceLocator.1.2\lib\portable-windows8+net40+sl5+windowsphone8\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity">
-      <HintPath>..\..\packages\Unity.3.5.1404.0\lib\win8\Microsoft.Practices.Unity.dll</HintPath>
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\win8\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention">
-      <HintPath>..\..\packages\Unity.3.5.1404.0\lib\win8\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\win8\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\Newtonsoft.Json.6.0.3\lib\netcore45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\netcore45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="UniRock">
-      <HintPath>..\..\packages\UniRock.2.0.5371.39092\lib\portable-win81+wpa81\UniRock.dll</HintPath>
+      <HintPath>..\packages\UniRock.2.0.5371.39092\lib\portable-win81+wpa81\UniRock.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -191,27 +191,31 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\AllAboutManga.Business.Libs\AllAboutManga.Business.Libs.csproj">
+    <ProjectReference Include="..\AllAboutManga.Business.Libs\AllAboutManga.Business.Libs.csproj">
       <Project>{493bd1a4-641f-4e2d-94ed-a5fa9fe12c3e}</Project>
       <Name>AllAboutManga.Business.Libs</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\AllAboutManga.Business\AllAboutManga.Business.csproj">
+    <ProjectReference Include="..\AllAboutManga.Business\AllAboutManga.Business.csproj">
       <Project>{1DA9FDE5-10D2-4115-891A-76B4A6A711AC}</Project>
       <Name>AllAboutManga.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\AllAboutManga.DataAccess.Libs\AllAboutManga.DataAccess.Libs.csproj">
+    <ProjectReference Include="..\AllAboutManga.Data.Libs\AllAboutManga.Data.Libs.csproj">
       <Project>{cd2fb9aa-b2de-46f6-80f7-1057570376f1}</Project>
       <Name>AllAboutManga.DataAccess.Libs</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\AllAboutManga.DataAccess.Mock\AllAboutManga.DataAccess.Mock.csproj">
+    <ProjectReference Include="..\AllAboutManga.Data.InMemory\AllAboutManga.Data.InMemory.csproj">
       <Project>{255eedb2-e7df-476f-bd40-4e3cba7d81f9}</Project>
-      <Name>AllAboutManga.DataAccess.Mock</Name>
+      <Name>AllAboutManga.DataAccess.InMemory</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\AllAboutManga.Webservice.Libs\AllAboutManga.Webservice.Libs.csproj">
+    <ProjectReference Include="..\AllAboutManga.Data.Sql\AllAboutManga.Data.Sql.csproj">
+      <Project>{a87cc0f6-8473-4fc5-8ed8-d051af963a1b}</Project>
+      <Name>AllAboutManga.DataAccess.Sql</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AllAboutManga.Webservice.Libs\AllAboutManga.Webservice.Libs.csproj">
       <Project>{E0BDFF03-ED86-484F-9800-61DA72F88311}</Project>
       <Name>AllAboutManga.Webservice.Libs</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\AllAboutManga.Webservice.MangaEden\AllAboutManga.Webservice.MangaEden.csproj">
+    <ProjectReference Include="..\AllAboutManga.Webservice.MangaEden\AllAboutManga.Webservice.MangaEden.csproj">
       <Project>{186EED12-D724-45B2-B8EA-DD0518DA6B4F}</Project>
       <Name>AllAboutManga.Webservice.MangaEden</Name>
     </ProjectReference>
@@ -220,13 +224,19 @@
     <SDKReference Include="BehaviorsXamlSDKManaged, Version=12.0">
       <Name>Behaviors SDK %28XAML%29</Name>
     </SDKReference>
+    <SDKReference Include="Microsoft.VCLibs, version=12.0">
+      <Name>Microsoft Visual C++ 2013 Runtime Package for Windows</Name>
+    </SDKReference>
+    <SDKReference Include="SQLite.WinRT81, Version=3.8.8.1">
+      <Name>SQLite for Windows Runtime %28Windows 8.1%29</Name>
+    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>
   <Import Project="..\AllAboutManga.Shared\AllAboutManga.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
-  <Import Project="..\..\packages\AutoMapper.3.3.0\tools\AutoMapper.targets" Condition="Exists('..\..\packages\AutoMapper.3.3.0\tools\AutoMapper.targets')" />
+  <Import Project="..\packages\AutoMapper.3.3.0\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.0\tools\AutoMapper.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

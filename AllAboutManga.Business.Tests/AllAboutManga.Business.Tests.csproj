@@ -11,7 +11,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AllAboutManga.Business.Tests</RootNamespace>
     <AssemblyName>AllAboutManga.Business.Tests</AssemblyName>
-    <DefaultLanguage>en</DefaultLanguage>
+    <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -138,9 +138,17 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AllAboutManga.Business.Libs\AllAboutManga.Business.Libs.csproj">
+      <Project>{493bd1a4-641f-4e2d-94ed-a5fa9fe12c3e}</Project>
+      <Name>AllAboutManga.Business.Libs</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AllAboutManga.Business\AllAboutManga.Business.csproj">
       <Project>{1DA9FDE5-10D2-4115-891A-76B4A6A711AC}</Project>
       <Name>AllAboutManga.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AllAboutManga.Data.Libs\AllAboutManga.Data.Libs.csproj">
+      <Project>{cd2fb9aa-b2de-46f6-80f7-1057570376f1}</Project>
+      <Name>AllAboutManga.Data.Libs</Name>
     </ProjectReference>
     <ProjectReference Include="..\AllAboutManga.Webservice.Libs\AllAboutManga.Webservice.Libs.csproj">
       <Project>{e0bdff03-ed86-484f-9800-61da72f88311}</Project>

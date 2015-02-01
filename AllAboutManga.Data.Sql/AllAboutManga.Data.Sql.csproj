@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CD2FB9AA-B2DE-46F6-80F7-1057570376F1}</ProjectGuid>
+    <ProjectGuid>{A87CC0F6-8473-4FC5-8ED8-D051AF963A1B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AllAboutManga.DataAccess.Libs</RootNamespace>
-    <AssemblyName>AllAboutManga.DataAccess.Libs</AssemblyName>
+    <RootNamespace>AllAboutManga.Data.Sql</RootNamespace>
+    <AssemblyName>AllAboutManga.Data.Sql</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -21,7 +21,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -35,18 +35,20 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\AllAboutManga.Data.Libs\AllAboutManga.Data.Libs.csproj">
+      <Project>{cd2fb9aa-b2de-46f6-80f7-1057570376f1}</Project>
+      <Name>AllAboutManga.Data.Libs</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <TargetPlatform Include="WindowsPhoneApp, Version=8.1" />
     <TargetPlatform Include="Windows, Version=8.1" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IMangaRepository.cs" />
-    <Compile Include="Models\Chapter.cs" />
-    <Compile Include="Models\Manga.cs" />
-    <Compile Include="Models\MangaCollection.cs" />
-    <Compile Include="Models\Page.cs" />
+    <Compile Include="RoamableRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLite.cs" />
+    <Compile Include="SQLiteAsync.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,12 +1,11 @@
-﻿using AllAboutManga.DataAccess.Libs;
+﻿using AllAboutManga.Data.Libs;
 using System;
 using System.Collections.Generic;
-using AllAboutManga.DataAccess.Libs.Models;
+using AllAboutManga.Data.Libs.Models;
 using System.Threading.Tasks;
-using System.Linq.Expressions;
 using System.Linq;
 
-namespace AllAboutManga.DataAccess.Mock
+namespace AllAboutManga.Data.InMemory
 {
     public class MangaRepository : IMangaRepository
     {
